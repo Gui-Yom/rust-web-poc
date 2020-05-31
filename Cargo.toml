@@ -1,10 +1,21 @@
 [package]
 name = "rust-web-poc"
 version = "0.1.0"
-authors = ["LimelioN <memorial.limelion@gmail.com\">"]
+authors = ["LimelioN <memorial.limelion@gmail.com>"]
 edition = "2018"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-rocket = "0.4.4"
+rocket = "0.4.5"
+juniper = { version = "0.14.2", optional = true, features = ["expose-test-schema", "serde_json"] }
+juniper_rocket = { version = "0.5.2", optional = true }
+
+[[bin]]
+name = "fibo"
+path = "src/fibo.rs"
+
+[[bin]]
+name = "graphql"
+path = "src/graphql.rs"
+required-features = ["juniper", "juniper_rocket"]
