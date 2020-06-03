@@ -7,15 +7,24 @@ edition = "2018"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-rocket = "0.4.5"
+rocket = { version = "0.4.5", optional = true }
 juniper = { version = "0.14.2", optional = true, features = ["expose-test-schema", "serde_json"] }
 juniper_rocket = { version = "0.5.2", optional = true }
+actix-web = { version = "2.0.0", optional = true }
+actix-rt = { version = "1.1.1", optional = true }
+serde = "1.0.111"
 
 [[bin]]
-name = "fibo"
-path = "src/fibo.rs"
+name = "fibo_rocket"
+path = "src/fibo_rocket.rs"
+required-features = ["rocket"]
 
 [[bin]]
 name = "graphql"
 path = "src/graphql.rs"
-required-features = ["juniper", "juniper_rocket"]
+required-features = ["rocket", "juniper", "juniper_rocket"]
+
+[[bin]]
+name = "fibo_actix"
+path = "src/fibo_actix.rs"
+required-features = ["actix-web", "actix-rt"]
