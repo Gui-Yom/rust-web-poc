@@ -1,8 +1,19 @@
 ### rust-web-poc
-Just fiddling a bit with rust web frameworks
+A quick comparison of some rust web frameworks.
+The goal here is to show rust can be viable option for backend development.
 
-Run `cargo run --bin fibo --features="rocket"` and visit `http://localhost:8000/?n=5` 
+#### Fibonacci sequence
+With rocket :
+
+Run `cargo run --bin rocket_fibo --features=rocket` and visit `http://localhost:8000/?n=5` 
 to show the 5th number of the fibonacci sequence.
 
-Run `cargo run --bin graphql --features="rocket juniper juniper_rocket` and
+With actix :
+
+Run `cargo run --bin actix_fibo --features=actix` and visit `http://localhost:8888/?n=5` 
+to show the 5th number of the fibonacci sequence.
+
+#### GraphQL server
+
+Run `cargo run --bin graphql --features=graphql` and
 visit `https://localhost:8000/` to get the GraphQLi interface.
