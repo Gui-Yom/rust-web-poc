@@ -1,5 +1,6 @@
 use actix_web::{App, HttpServer, web};
 use serde::Deserialize;
+
 use rust_web_poc::fibonacci::fibo;
 
 #[derive(Deserialize)]
@@ -11,7 +12,7 @@ async fn index(req: web::Query<FiboReq>) -> String {
     format!("{}", fibo(req.n))
 }
 
-#[actix_rt::main]
+#[actix_web::main]
 async fn main() -> std::io::Result<()> {
     HttpServer::new(|| {
         App::new().route("/", web::get().to(index))

@@ -8,26 +8,11 @@ include = ["src/**/*", "README.md"]
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-rocket = { version = "0.4", optional = true }
-juniper = { version = "0.14", optional = true, features = ["expose-test-schema", "serde_json"] }
-juniper_rocket = { version = "0.5", optional = true }
-actix-web = { version = "2.0", optional = true }
-actix-rt = { version = "1.1", optional = true }
+actix-web = { version = "3", optional = true }
 serde = { version = "1.0", features = ["derive"] }
 
 [features]
-graphql = ["rocket", "juniper", "juniper_rocket"]
-actix = ["actix-web", "actix-rt"]
-
-[[bin]]
-name = "rocket_fibo"
-path = "src/rocket/fibo.rs"
-required-features = ["rocket"]
-
-[[bin]]
-name = "rocket_graphql"
-path = "src/rocket/graphql.rs"
-required-features = ["graphql"]
+actix = ["actix-web"]
 
 [[bin]]
 name = "actix_fibo"
